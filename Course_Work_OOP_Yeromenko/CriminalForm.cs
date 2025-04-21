@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Course_Work_OOP_Yeromenko
+{
+    public partial class CriminalForm : Form
+    {
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Criminal CriminalData { get; private set; }
+        private List<Gang> gangs;
+        private bool isEditMode;
+        public CriminalForm(List<Gang> gangs)
+        {
+            InitializeComponent();
+            this.gangs = gangs;
+            cmbGang.DataSource = gangs;
+            cmbGang.DisplayMember = "Name";
+        }
+
+        public CriminalForm(List<Gang> gangs, Criminal criminalToEdit) : this(gangs)
+        {
+            isEditMode = true;
+            this.CriminalData = criminalToEdit;
+            FillFields(criminalToEdit);
+        }
+        public void FillFields(Criminal c)
+        {
+            txtLastName.Text = c.LastName;
+            txtFirstName.Text = c.FirstName;
+            txtNickname.Text = c.Nickname;
+            txtHeight.Text = c.Height.ToString();
+            txtEyeColor.Text = c.EyeColor;
+            txtHairColor.Text = c.HairColor;
+            txtCitizenship.Text = c.Citizenship;
+            txtBirthPlace.Text = c.BirthPlace;
+            dtpBirthDate.Value = c.BirthDate;
+            txtLastAddress.Text = c.LastAddress;
+            txtLanguages.Text = c.Languages;
+            txtProfession.Text = c.CriminalProfession;
+            txtCaseStatus.Text = c.CaseStatus;
+            txtDistinctiveMarks.Text = c.DistinctiveMarks;
+            cmbGang.SelectedItem = c.Gang;
+
+        }
+
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (CriminalData == null)
+            {
+                CriminalData = new Criminal();
+            }
+            CriminalData.LastName = txtLastName.Text;
+            CriminalData.FirstName = txtFirstName.Text;
+            CriminalData.Nickname = txtNickname.Text;
+            CriminalData.Height = int.TryParse(txtHeight.Text, out int h) ? h : 0;
+            CriminalData.EyeColor = txtEyeColor.Text;
+            CriminalData.HairColor = txtHairColor.Text;
+            CriminalData.Citizenship = txtCitizenship.Text;
+            CriminalData.BirthPlace = txtBirthPlace.Text;
+            CriminalData.BirthDate = dtpBirthDate.Value;
+            CriminalData.LastAddress = txtLastAddress.Text;
+            CriminalData.Languages = txtLanguages.Text;
+            CriminalData.CriminalProfession = txtProfession.Text;
+            CriminalData.CaseStatus = txtCaseStatus.Text;
+            CriminalData.DistinctiveMarks = txtDistinctiveMarks.Text;
+            CriminalData.Gang = cmbGang.SelectedItem as Gang;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+    }
+}
