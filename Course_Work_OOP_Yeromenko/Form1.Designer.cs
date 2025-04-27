@@ -34,9 +34,6 @@ namespace Course_Work_OOP_Yeromenko
             panel1 = new Panel();
             flpCriminals = new FlowLayoutPanel();
             comboBox1 = new ComboBox();
-            btnArchive = new Button();
-            btnDelete = new Button();
-            btnEdit = new Button();
             btnAdd = new Button();
             btnSearch = new Button();
             label1 = new Label();
@@ -47,9 +44,6 @@ namespace Course_Work_OOP_Yeromenko
             // 
             panel1.Controls.Add(flpCriminals);
             panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(btnArchive);
-            panel1.Controls.Add(btnDelete);
-            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(label1);
@@ -75,37 +69,9 @@ namespace Course_Work_OOP_Yeromenko
             comboBox1.Size = new Size(731, 33);
             comboBox1.TabIndex = 2;
             // 
-            // btnArchive
-            // 
-            btnArchive.Location = new Point(755, 466);
-            btnArchive.Name = "btnArchive";
-            btnArchive.Size = new Size(112, 34);
-            btnArchive.TabIndex = 8;
-            btnArchive.Text = "Архівувати";
-            btnArchive.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(558, 466);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(112, 34);
-            btnDelete.TabIndex = 7;
-            btnDelete.Text = " Видалити";
-            btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Location = new Point(359, 466);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(112, 34);
-            btnEdit.TabIndex = 6;
-            btnEdit.Text = "Редагувати";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(147, 466);
+            btnAdd.Location = new Point(488, 467);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(112, 34);
             btnAdd.TabIndex = 5;
@@ -150,10 +116,7 @@ namespace Course_Work_OOP_Yeromenko
         private Panel panel1;
         private Label label1;
         private Button btnSearch;
-        private Button btnEdit;
         private Button btnAdd;
-        private Button btnArchive;
-        private Button btnDelete;
         private ComboBox comboBox1;
         private FlowLayoutPanel flpCriminals;
     }

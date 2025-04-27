@@ -29,6 +29,20 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            cmbGang = new ComboBox();
+            txtCaseStatus = new TextBox();
+            txtLanguages = new TextBox();
+            txtDistinctiveMarks = new TextBox();
+            txtProfession = new TextBox();
+            txtLastAddress = new TextBox();
+            txtBirthPlace = new TextBox();
+            txtCitizenship = new TextBox();
+            txtHairColor = new TextBox();
+            txtEyeColor = new TextBox();
+            txtHeight = new TextBox();
+            txtNickname = new TextBox();
+            txtName = new TextBox();
+            txtLastName = new TextBox();
             lblGang = new Label();
             lblCaseStatus = new Label();
             lblLanguages = new Label();
@@ -45,11 +59,29 @@
             lblName = new Label();
             lblLastName = new Label();
             btnClose = new Button();
+            btnSave = new Button();
+            btnEdit = new Button();
+            dtpBirthDate = new DateTimePicker();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(dtpBirthDate);
+            groupBox1.Controls.Add(cmbGang);
+            groupBox1.Controls.Add(txtCaseStatus);
+            groupBox1.Controls.Add(txtLanguages);
+            groupBox1.Controls.Add(txtDistinctiveMarks);
+            groupBox1.Controls.Add(txtProfession);
+            groupBox1.Controls.Add(txtLastAddress);
+            groupBox1.Controls.Add(txtBirthPlace);
+            groupBox1.Controls.Add(txtCitizenship);
+            groupBox1.Controls.Add(txtHairColor);
+            groupBox1.Controls.Add(txtEyeColor);
+            groupBox1.Controls.Add(txtHeight);
+            groupBox1.Controls.Add(txtNickname);
+            groupBox1.Controls.Add(txtName);
+            groupBox1.Controls.Add(txtLastName);
             groupBox1.Controls.Add(lblGang);
             groupBox1.Controls.Add(lblCaseStatus);
             groupBox1.Controls.Add(lblLanguages);
@@ -71,6 +103,105 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Criminal Details";
+            // 
+            // cmbGang
+            // 
+            cmbGang.FormattingEnabled = true;
+            cmbGang.Location = new Point(148, 547);
+            cmbGang.Name = "cmbGang";
+            cmbGang.Size = new Size(557, 33);
+            cmbGang.TabIndex = 29;
+            // 
+            // txtCaseStatus
+            // 
+            txtCaseStatus.Location = new Point(148, 510);
+            txtCaseStatus.Name = "txtCaseStatus";
+            txtCaseStatus.Size = new Size(557, 31);
+            txtCaseStatus.TabIndex = 28;
+            // 
+            // txtLanguages
+            // 
+            txtLanguages.Location = new Point(148, 473);
+            txtLanguages.Name = "txtLanguages";
+            txtLanguages.Size = new Size(557, 31);
+            txtLanguages.TabIndex = 27;
+            // 
+            // txtDistinctiveMarks
+            // 
+            txtDistinctiveMarks.Location = new Point(188, 437);
+            txtDistinctiveMarks.Name = "txtDistinctiveMarks";
+            txtDistinctiveMarks.Size = new Size(517, 31);
+            txtDistinctiveMarks.TabIndex = 26;
+            // 
+            // txtProfession
+            // 
+            txtProfession.Location = new Point(148, 397);
+            txtProfession.Name = "txtProfession";
+            txtProfession.Size = new Size(557, 31);
+            txtProfession.TabIndex = 25;
+            // 
+            // txtLastAddress
+            // 
+            txtLastAddress.Location = new Point(148, 360);
+            txtLastAddress.Name = "txtLastAddress";
+            txtLastAddress.Size = new Size(557, 31);
+            txtLastAddress.TabIndex = 24;
+            // 
+            // txtBirthPlace
+            // 
+            txtBirthPlace.Location = new Point(148, 286);
+            txtBirthPlace.Name = "txtBirthPlace";
+            txtBirthPlace.Size = new Size(557, 31);
+            txtBirthPlace.TabIndex = 22;
+            // 
+            // txtCitizenship
+            // 
+            txtCitizenship.Location = new Point(148, 246);
+            txtCitizenship.Name = "txtCitizenship";
+            txtCitizenship.Size = new Size(557, 31);
+            txtCitizenship.TabIndex = 21;
+            // 
+            // txtHairColor
+            // 
+            txtHairColor.Location = new Point(148, 209);
+            txtHairColor.Name = "txtHairColor";
+            txtHairColor.Size = new Size(557, 31);
+            txtHairColor.TabIndex = 20;
+            // 
+            // txtEyeColor
+            // 
+            txtEyeColor.Location = new Point(148, 173);
+            txtEyeColor.Name = "txtEyeColor";
+            txtEyeColor.Size = new Size(557, 31);
+            txtEyeColor.TabIndex = 19;
+            // 
+            // txtHeight
+            // 
+            txtHeight.Location = new Point(148, 137);
+            txtHeight.Name = "txtHeight";
+            txtHeight.Size = new Size(557, 31);
+            txtHeight.TabIndex = 18;
+            // 
+            // txtNickname
+            // 
+            txtNickname.Location = new Point(148, 103);
+            txtNickname.Name = "txtNickname";
+            txtNickname.Size = new Size(557, 31);
+            txtNickname.TabIndex = 17;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(148, 67);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(557, 31);
+            txtName.TabIndex = 16;
+            // 
+            // txtLastName
+            // 
+            txtLastName.Location = new Point(148, 30);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(557, 31);
+            txtLastName.TabIndex = 15;
             // 
             // lblGang
             // 
@@ -209,7 +340,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(307, 619);
+            btnClose.Location = new Point(556, 619);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(112, 34);
             btnClose.TabIndex = 1;
@@ -217,11 +348,40 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click_1;
             // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(336, 619);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(112, 34);
+            btnSave.TabIndex = 2;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(112, 619);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(112, 34);
+            btnEdit.TabIndex = 3;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // dtpBirthDate
+            // 
+            dtpBirthDate.Location = new Point(148, 323);
+            dtpBirthDate.Name = "dtpBirthDate";
+            dtpBirthDate.Size = new Size(557, 31);
+            dtpBirthDate.TabIndex = 30;
+            // 
             // DetailsForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 665);
+            Controls.Add(btnEdit);
+            Controls.Add(btnSave);
             Controls.Add(btnClose);
             Controls.Add(groupBox1);
             Name = "DetailsForm";
@@ -251,5 +411,22 @@
         private Label lblDistinctiveMarks;
         private Label lblCriminalProfession;
         private Button btnClose;
+        private TextBox txtNickname;
+        private TextBox txtName;
+        private TextBox txtLastName;
+        private ComboBox cmbGang;
+        private TextBox txtCaseStatus;
+        private TextBox txtLanguages;
+        private TextBox txtDistinctiveMarks;
+        private TextBox txtProfession;
+        private TextBox txtLastAddress;
+        private TextBox txtBirthPlace;
+        private TextBox txtCitizenship;
+        private TextBox txtHairColor;
+        private TextBox txtEyeColor;
+        private TextBox txtHeight;
+        private Button btnSave;
+        private Button btnEdit;
+        private DateTimePicker dtpBirthDate;
     }
 }

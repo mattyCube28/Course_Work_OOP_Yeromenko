@@ -34,6 +34,7 @@
             lblProfession = new Label();
             lblBirthDate = new Label();
             btnMore = new Button();
+            btnDelete = new Button();
             SuspendLayout();
             // 
             // lblName
@@ -83,12 +84,22 @@
             // 
             // btnMore
             // 
-            btnMore.Location = new Point(196, 216);
+            btnMore.Location = new Point(89, 215);
             btnMore.Name = "btnMore";
             btnMore.Size = new Size(112, 34);
             btnMore.TabIndex = 5;
             btnMore.Text = "More";
             btnMore.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(326, 215);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(112, 34);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // CriminalCard
             // 
@@ -96,6 +107,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(btnDelete);
             Controls.Add(btnMore);
             Controls.Add(lblBirthDate);
             Controls.Add(lblProfession);
@@ -117,5 +129,6 @@
         private Label lblProfession;
         private Label lblBirthDate;
         private Button btnMore;
+        private Button btnDelete;
     }
 }
