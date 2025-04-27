@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dtpBirthDate = new DateTimePicker();
             cmbGang = new ComboBox();
             txtCaseStatus = new TextBox();
             txtLanguages = new TextBox();
             txtDistinctiveMarks = new TextBox();
-            txtProfession = new TextBox();
             txtLastAddress = new TextBox();
             txtBirthPlace = new TextBox();
             txtCitizenship = new TextBox();
@@ -60,18 +60,18 @@
             label1 = new Label();
             btnSave = new Button();
             btnCancel = new Button();
-            dtpBirthDate = new DateTimePicker();
+            cmbProfession = new ComboBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cmbProfession);
             groupBox1.Controls.Add(dtpBirthDate);
             groupBox1.Controls.Add(cmbGang);
             groupBox1.Controls.Add(txtCaseStatus);
             groupBox1.Controls.Add(txtLanguages);
             groupBox1.Controls.Add(txtDistinctiveMarks);
-            groupBox1.Controls.Add(txtProfession);
             groupBox1.Controls.Add(txtLastAddress);
             groupBox1.Controls.Add(txtBirthPlace);
             groupBox1.Controls.Add(txtCitizenship);
@@ -105,6 +105,13 @@
             groupBox1.Text = "Злочинець";
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // dtpBirthDate
+            // 
+            dtpBirthDate.Location = new Point(219, 374);
+            dtpBirthDate.Name = "dtpBirthDate";
+            dtpBirthDate.Size = new Size(584, 37);
+            dtpBirthDate.TabIndex = 30;
+            // 
             // cmbGang
             // 
             cmbGang.FormattingEnabled = true;
@@ -133,13 +140,6 @@
             txtDistinctiveMarks.Name = "txtDistinctiveMarks";
             txtDistinctiveMarks.Size = new Size(584, 37);
             txtDistinctiveMarks.TabIndex = 26;
-            // 
-            // txtProfession
-            // 
-            txtProfession.Location = new Point(219, 462);
-            txtProfession.Name = "txtProfession";
-            txtProfession.Size = new Size(584, 37);
-            txtProfession.TabIndex = 25;
             // 
             // txtLastAddress
             // 
@@ -373,12 +373,13 @@
             btnCancel.Text = "Скасувати";
             btnCancel.UseVisualStyleBackColor = true;
             // 
-            // dtpBirthDate
+            // cmbProfession
             // 
-            dtpBirthDate.Location = new Point(219, 374);
-            dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(584, 37);
-            dtpBirthDate.TabIndex = 30;
+            cmbProfession.FormattingEnabled = true;
+            cmbProfession.Location = new Point(219, 460);
+            cmbProfession.Name = "cmbProfession";
+            cmbProfession.Size = new Size(584, 38);
+            cmbProfession.TabIndex = 31;
             // 
             // CriminalForm
             // 
@@ -425,10 +426,10 @@
         private TextBox txtCaseStatus;
         private TextBox txtLanguages;
         private TextBox txtDistinctiveMarks;
-        private TextBox txtProfession;
         private Button btnSave;
         private Button btnCancel;
         private ComboBox cmbGang;
         private DateTimePicker dtpBirthDate;
+        private ComboBox cmbProfession;
     }
 }

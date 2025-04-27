@@ -10,18 +10,13 @@ namespace Course_Work_OOP_Yeromenko
         public Form1()
         {
             InitializeComponent();
-            SeedData();
-            RefreshGrid();
+            
         }
-        private void SeedData()
+        private void Form1_Load(object sender, EventArgs e)
         {
-            gangs.Add(new Gang { Name = "La Cosa Nostra", Country = "²òàë³ÿ" });
-            gangs.Add(new Gang { Name = "Yakudza", Country = "ßïîí³ÿ" });
-        }
-        private void RefreshGrid()
-        {
-            dgvCriminals.DataSource = null;
-            dgvCriminals.DataSource = criminals;
+            //LoadFromFile();
+            RefreshCards();
+            flpCriminals.BorderStyle = BorderStyle.FixedSingle;
         }
 
 
@@ -39,11 +34,21 @@ namespace Course_Work_OOP_Yeromenko
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var form = new CriminalForm(gangs);
-            if (form.ShowDialog() == DialogResult.OK)
+            var criminalForm = new CriminalForm(gangs);
+            if(criminalForm.ShowDialog() == DialogResult.OK)
             {
-                criminals.Add(form.CriminalData);
-                RefreshGrid();
+                Criminal newCriminal = criminalForm.CriminalData;
+                criminals.Add(newCriminal);
+                RefreshCards();
+            }
+        }
+        private void RefreshCards()
+        {
+            flpCriminals.Controls.Clear();
+            foreach(var criminal in criminals)
+            {
+                var card = new CriminalCard(criminal);
+                flpCriminals.Controls.Add(card);
             }
         }
 
@@ -56,18 +61,13 @@ namespace Course_Work_OOP_Yeromenko
         {
 
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(dgvCriminals.CurrentRow == null) return;
-            int  index = dgvCriminals.CurrentRow.Index;
-            var selected = criminals[index];
-            var form = new CriminalForm(gangs, selected);
-            if(form.ShowDialog() == DialogResult.OK)
+            if(flpCriminals.Controls.Count == 0)
             {
-                criminals[index] = form.CriminalData;
-                RefreshGrid();
+                return;
             }
         }
+        
     }
 }

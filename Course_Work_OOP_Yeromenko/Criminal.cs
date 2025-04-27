@@ -21,7 +21,7 @@ namespace Course_Work_OOP_Yeromenko
         public DateTime BirthDate { get; set; }
         public string LastAddress { get; set; }
         public string Languages { get; set; }
-        public string CriminalProfession { get; set; }
+        public string CriminalProfession { get; protected set; }
         public string CaseStatus { get; set;}
         public Gang Gang { get; set; }  
     }

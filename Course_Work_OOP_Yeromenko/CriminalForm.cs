@@ -23,6 +23,19 @@ namespace Course_Work_OOP_Yeromenko
             this.gangs = gangs;
             cmbGang.DataSource = gangs;
             cmbGang.DisplayMember = "Name";
+            cmbProfession.Items.AddRange(new string[]
+   {
+        "Terrorist",
+        "Hacker",
+        "Murderer",
+        "Rapist",
+        "Robber",
+        "Hitman",
+        "Fraudster",
+        "Drugdealer",
+        "Kidnapper"
+
+   });
         }
 
         public CriminalForm(List<Gang> gangs, Criminal criminalToEdit) : this(gangs)
@@ -44,7 +57,7 @@ namespace Course_Work_OOP_Yeromenko
             dtpBirthDate.Value = c.BirthDate;
             txtLastAddress.Text = c.LastAddress;
             txtLanguages.Text = c.Languages;
-            txtProfession.Text = c.CriminalProfession;
+            cmbProfession.SelectedItem = c.CriminalProfession;
             txtCaseStatus.Text = c.CaseStatus;
             txtDistinctiveMarks.Text = c.DistinctiveMarks;
             cmbGang.SelectedItem = c.Gang;
@@ -61,6 +74,43 @@ namespace Course_Work_OOP_Yeromenko
         {
             if (CriminalData == null)
             {
+                switch (cmbProfession.SelectedItem.ToString())
+                {
+                    case "Terrorist":
+                        CriminalData = new Terrorist();
+                        break;
+                    case "Hacker":
+                        CriminalData = new Hacker();
+                        break;
+                    case "Murderer":
+                        CriminalData = new Murderer();
+                        break;
+                    case "Rapist":
+                        CriminalData = new Rapist();
+                        break;
+                    case "Robber":
+                        CriminalData = new Robber();
+                        break;
+                    case "Hitman":
+                        CriminalData = new Hitman();
+                        break;
+                    case "Fraudster":
+                        CriminalData = new Fraudster();
+                        break;
+                    case "Drugdealer":
+                        CriminalData = new DrugDealer();
+                        break;
+                    case "Kidnapper":
+                        CriminalData = new Kidnapper();
+                        break;
+                    default:
+                        CriminalData = new Criminal();
+                        break;
+                }
+                
+            }
+            if (CriminalData == null)
+            {
                 CriminalData = new Criminal();
             }
             CriminalData.LastName = txtLastName.Text;
@@ -74,7 +124,6 @@ namespace Course_Work_OOP_Yeromenko
             CriminalData.BirthDate = dtpBirthDate.Value;
             CriminalData.LastAddress = txtLastAddress.Text;
             CriminalData.Languages = txtLanguages.Text;
-            CriminalData.CriminalProfession = txtProfession.Text;
             CriminalData.CaseStatus = txtCaseStatus.Text;
             CriminalData.DistinctiveMarks = txtDistinctiveMarks.Text;
             CriminalData.Gang = cmbGang.SelectedItem as Gang;
