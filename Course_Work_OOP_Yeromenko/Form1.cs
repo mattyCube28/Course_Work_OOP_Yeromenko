@@ -11,7 +11,7 @@ namespace Course_Work_OOP_Yeromenko
         public Form1()
         {
             InitializeComponent();
-            
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace Course_Work_OOP_Yeromenko
             {
                 WriteIndented = true,
                 ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve
-            
+
             };
             string json = JsonSerializer.Serialize(criminals, options);
             File.WriteAllText("criminals.json", json);
@@ -34,18 +34,50 @@ namespace Course_Work_OOP_Yeromenko
         }
         private void LoadFromFile()
         {
-            if(File.Exists("criminals.json"))
+            if (File.Exists("criminals.json"))
             {
                 string json = File.ReadAllText("criminals.json");
                 var options = new JsonSerializerOptions
-                { 
+                {
                     ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve
 
 
-                
+
                 };
                 criminals = JsonSerializer.Deserialize<List<Criminal>>(json, options) ?? new List<Criminal>();
 
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string query = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(query))
+            {
+                FilterCards(query);
+            }
+            else
+            {
+                RefreshCards();
+            }
+        }
+        private void FilterCards(string query)
+        {
+            var filteredCriminals = criminals.Where(c =>
+            c.LastName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            c.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            c.Nickname.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+             c.CriminalProfession.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            c.CaseStatus.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            c.DistinctiveMarks.Contains(query, StringComparison.OrdinalIgnoreCase)
+        ).ToList();
+
+            flpCriminals.Controls.Clear();
+            foreach (var criminal in filteredCriminals)
+            {
+                var card = new CriminalCard(criminal);
+                card.CriminalUpdated += CriminalCard_CriminalUpdated;
+                flpCriminals.Controls.Add(card);
             }
         }
 
@@ -62,7 +94,7 @@ namespace Course_Work_OOP_Yeromenko
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var criminalForm = new CriminalForm(gangs);
-            if(criminalForm.ShowDialog() == DialogResult.OK)
+            if (criminalForm.ShowDialog() == DialogResult.OK)
             {
                 Criminal newCriminal = criminalForm.CriminalData;
                 criminals.Add(newCriminal);
@@ -73,17 +105,17 @@ namespace Course_Work_OOP_Yeromenko
         private void RefreshCards()
         {
             flpCriminals.Controls.Clear();
-            foreach(var criminal in criminals)
+            foreach (var criminal in criminals)
             {
                 var card = new CriminalCard(criminal);
                 card.CriminalUpdated += CriminalCard_CriminalUpdated;
                 card.DeleteRequested += (s, e) => DeleteCriminal(criminal);
                 flpCriminals.Controls.Add(card);
             }
-            
+
         }
 
-        
+
         private void CriminalCard_CriminalUpdated(object sender, EventArgs e)
         {
             SaveToFile();
@@ -94,7 +126,7 @@ namespace Course_Work_OOP_Yeromenko
         {
             criminals.Remove(criminal);
             RefreshCards();
-            SaveToFile();  
+            SaveToFile();
         }
         private void label8_Click(object sender, EventArgs e)
         {
@@ -107,11 +139,12 @@ namespace Course_Work_OOP_Yeromenko
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(flpCriminals.Controls.Count == 0)
+            if (flpCriminals.Controls.Count == 0)
             {
                 return;
             }
         }
+
         
     }
 }

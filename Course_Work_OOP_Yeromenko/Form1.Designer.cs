@@ -32,8 +32,8 @@ namespace Course_Work_OOP_Yeromenko
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtSearch = new TextBox();
             flpCriminals = new FlowLayoutPanel();
-            comboBox1 = new ComboBox();
             btnAdd = new Button();
             btnSearch = new Button();
             label1 = new Label();
@@ -42,8 +42,8 @@ namespace Course_Work_OOP_Yeromenko
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(flpCriminals);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(btnAdd);
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(label1);
@@ -51,6 +51,13 @@ namespace Course_Work_OOP_Yeromenko
             panel1.Name = "panel1";
             panel1.Size = new Size(1094, 516);
             panel1.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(131, 12);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(771, 31);
+            txtSearch.TabIndex = 10;
             // 
             // flpCriminals
             // 
@@ -60,14 +67,6 @@ namespace Course_Work_OOP_Yeromenko
             flpCriminals.Name = "flpCriminals";
             flpCriminals.Size = new Size(979, 352);
             flpCriminals.TabIndex = 9;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(147, 9);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(731, 33);
-            comboBox1.TabIndex = 2;
             // 
             // btnAdd
             // 
@@ -81,12 +80,10 @@ namespace Course_Work_OOP_Yeromenko
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(926, 9);
+            btnSearch.Location = new Point(952, 12);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(112, 34);
-            btnSearch.TabIndex = 2;
-            btnSearch.Text = "Знайти";
-            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Size = new Size(86, 31);
+            btnSearch.TabIndex = 11;
             // 
             // label1
             // 
@@ -117,7 +114,7 @@ namespace Course_Work_OOP_Yeromenko
         private Label label1;
         private Button btnSearch;
         private Button btnAdd;
-        private ComboBox comboBox1;
         private FlowLayoutPanel flpCriminals;
+        private TextBox txtSearch;
     }
 }
