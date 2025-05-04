@@ -49,6 +49,7 @@ namespace Course_Work_OOP_Yeromenko
 
         private void CriminalCard_Load(object sender, EventArgs e)
         {
+            
 
         }
 

@@ -32,25 +32,36 @@ namespace Course_Work_OOP_Yeromenko
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnSearch = new Button();
             txtSearch = new TextBox();
             flpCriminals = new FlowLayoutPanel();
             btnAdd = new Button();
-            btnSearch = new Button();
             label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(flpCriminals);
             panel1.Controls.Add(btnAdd);
-            panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(label1);
+            panel1.Font = new Font("Segoe UI", 9F);
             panel1.Location = new Point(55, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(1094, 516);
             panel1.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(941, 9);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(112, 34);
+            btnSearch.TabIndex = 11;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
@@ -70,30 +81,24 @@ namespace Course_Work_OOP_Yeromenko
             // 
             // btnAdd
             // 
+            btnAdd.Font = new Font("Segoe UI", 9F);
             btnAdd.Location = new Point(488, 467);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(112, 34);
             btnAdd.TabIndex = 5;
-            btnAdd.Text = "Додати";
+            btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(952, 12);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(86, 31);
-            btnSearch.TabIndex = 11;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(33, 15);
+            label1.Font = new Font("Yu Gothic UI", 9F);
+            label1.Location = new Point(3, 21);
             label1.Name = "label1";
-            label1.Size = new Size(78, 28);
+            label1.Size = new Size(129, 25);
             label1.TabIndex = 1;
-            label1.Text = "Пошук:";
+            label1.Text = "Type to search:";
             label1.Click += label1_Click;
             // 
             // Form1
@@ -104,6 +109,7 @@ namespace Course_Work_OOP_Yeromenko
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load_1;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -112,9 +118,9 @@ namespace Course_Work_OOP_Yeromenko
         #endregion
         private Panel panel1;
         private Label label1;
-        private Button btnSearch;
         private Button btnAdd;
         private FlowLayoutPanel flpCriminals;
         private TextBox txtSearch;
+        private Button btnSearch;
     }
 }

@@ -23,6 +23,6 @@ namespace Course_Work_OOP_Yeromenko
         public string Languages { get; set; }
         public string CriminalProfession { get;  set; }
         public string CaseStatus { get; set;}
-        public Gang Gang { get; set; }  
+        public string GangName { get; set; }  
     }
 }

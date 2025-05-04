@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            cmbGang = new ComboBox();
+            cmbProfession = new ComboBox();
+            dtpBirthDate = new DateTimePicker();
             txtCaseStatus = new TextBox();
             txtLanguages = new TextBox();
             txtDistinctiveMarks = new TextBox();
-            txtProfession = new TextBox();
             txtLastAddress = new TextBox();
             txtBirthPlace = new TextBox();
             txtCitizenship = new TextBox();
@@ -61,18 +61,18 @@
             btnClose = new Button();
             btnSave = new Button();
             btnEdit = new Button();
-            dtpBirthDate = new DateTimePicker();
+            txtGang = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtGang);
+            groupBox1.Controls.Add(cmbProfession);
             groupBox1.Controls.Add(dtpBirthDate);
-            groupBox1.Controls.Add(cmbGang);
             groupBox1.Controls.Add(txtCaseStatus);
             groupBox1.Controls.Add(txtLanguages);
             groupBox1.Controls.Add(txtDistinctiveMarks);
-            groupBox1.Controls.Add(txtProfession);
             groupBox1.Controls.Add(txtLastAddress);
             groupBox1.Controls.Add(txtBirthPlace);
             groupBox1.Controls.Add(txtCitizenship);
@@ -104,13 +104,20 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Criminal Details";
             // 
-            // cmbGang
+            // cmbProfession
             // 
-            cmbGang.FormattingEnabled = true;
-            cmbGang.Location = new Point(148, 547);
-            cmbGang.Name = "cmbGang";
-            cmbGang.Size = new Size(557, 33);
-            cmbGang.TabIndex = 29;
+            cmbProfession.FormattingEnabled = true;
+            cmbProfession.Location = new Point(148, 397);
+            cmbProfession.Name = "cmbProfession";
+            cmbProfession.Size = new Size(557, 33);
+            cmbProfession.TabIndex = 31;
+            // 
+            // dtpBirthDate
+            // 
+            dtpBirthDate.Location = new Point(148, 323);
+            dtpBirthDate.Name = "dtpBirthDate";
+            dtpBirthDate.Size = new Size(557, 31);
+            dtpBirthDate.TabIndex = 30;
             // 
             // txtCaseStatus
             // 
@@ -132,13 +139,6 @@
             txtDistinctiveMarks.Name = "txtDistinctiveMarks";
             txtDistinctiveMarks.Size = new Size(517, 31);
             txtDistinctiveMarks.TabIndex = 26;
-            // 
-            // txtProfession
-            // 
-            txtProfession.Location = new Point(148, 397);
-            txtProfession.Name = "txtProfession";
-            txtProfession.Size = new Size(557, 31);
-            txtProfession.TabIndex = 25;
             // 
             // txtLastAddress
             // 
@@ -368,12 +368,12 @@
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
-            // dtpBirthDate
+            // txtGang
             // 
-            dtpBirthDate.Location = new Point(148, 323);
-            dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(557, 31);
-            dtpBirthDate.TabIndex = 30;
+            txtGang.Location = new Point(148, 550);
+            txtGang.Name = "txtGang";
+            txtGang.Size = new Size(557, 31);
+            txtGang.TabIndex = 32;
             // 
             // DetailsForm
             // 
@@ -414,11 +414,9 @@
         private TextBox txtNickname;
         private TextBox txtName;
         private TextBox txtLastName;
-        private ComboBox cmbGang;
         private TextBox txtCaseStatus;
         private TextBox txtLanguages;
         private TextBox txtDistinctiveMarks;
-        private TextBox txtProfession;
         private TextBox txtLastAddress;
         private TextBox txtBirthPlace;
         private TextBox txtCitizenship;
@@ -428,5 +426,7 @@
         private Button btnSave;
         private Button btnEdit;
         private DateTimePicker dtpBirthDate;
+        private ComboBox cmbProfession;
+        private TextBox txtGang;
     }
 }

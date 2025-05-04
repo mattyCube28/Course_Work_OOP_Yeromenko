@@ -15,14 +15,14 @@ namespace Course_Work_OOP_Yeromenko
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Criminal CriminalData { get; private set; }
-        private List<Gang> gangs;
+        private List<string> gangs;
         private bool isEditMode;
-        public CriminalForm(List<Gang> gangs)
+        public CriminalForm(List<string> gangs)
         {
             InitializeComponent();
             this.gangs = gangs;
-            cmbGang.DataSource = gangs;
-            cmbGang.DisplayMember = "Name";
+            
+            
             cmbProfession.Items.AddRange(new string[]
    {
         "Terrorist",
@@ -38,7 +38,7 @@ namespace Course_Work_OOP_Yeromenko
    });
         }
 
-        public CriminalForm(List<Gang> gangs, Criminal criminalToEdit) : this(gangs)
+        public CriminalForm(List<string> gangs, Criminal criminalToEdit) : this(gangs)
         {
             isEditMode = true;
             this.CriminalData = criminalToEdit;
@@ -50,17 +50,17 @@ namespace Course_Work_OOP_Yeromenko
             txtFirstName.Text = c.FirstName;
             txtNickname.Text = c.Nickname;
             txtHeight.Text = c.Height.ToString();
-            txtEyeColor.Text = c.EyeColor;
             txtHairColor.Text = c.HairColor;
+            txtEyeColor.Text = c.EyeColor;
             txtCitizenship.Text = c.Citizenship;
+            txtDistinctiveMarks.Text = c.DistinctiveMarks;
             txtBirthPlace.Text = c.BirthPlace;
             dtpBirthDate.Value = c.BirthDate;
             txtLastAddress.Text = c.LastAddress;
             txtLanguages.Text = c.Languages;
             cmbProfession.SelectedItem = c.CriminalProfession;
             txtCaseStatus.Text = c.CaseStatus;
-            txtDistinctiveMarks.Text = c.DistinctiveMarks;
-            cmbGang.SelectedItem = c.Gang;
+            txtGang.Text = c.GangName;
 
         }
 
@@ -117,17 +117,16 @@ namespace Course_Work_OOP_Yeromenko
             CriminalData.FirstName = txtFirstName.Text;
             CriminalData.Nickname = txtNickname.Text;
             CriminalData.Height = int.TryParse(txtHeight.Text, out int h) ? h : 0;
-            CriminalData.EyeColor = txtEyeColor.Text;
             CriminalData.HairColor = txtHairColor.Text;
+            CriminalData.EyeColor = txtEyeColor.Text;         
             CriminalData.Citizenship = txtCitizenship.Text;
+            CriminalData.DistinctiveMarks = txtDistinctiveMarks.Text;
             CriminalData.BirthPlace = txtBirthPlace.Text;
             CriminalData.BirthDate = dtpBirthDate.Value;
             CriminalData.LastAddress = txtLastAddress.Text;
             CriminalData.Languages = txtLanguages.Text;
             CriminalData.CaseStatus = txtCaseStatus.Text;
-            CriminalData.DistinctiveMarks = txtDistinctiveMarks.Text;
-            CriminalData.Gang = cmbGang.SelectedItem as Gang;
-
+            CriminalData.GangName = txtGang.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
