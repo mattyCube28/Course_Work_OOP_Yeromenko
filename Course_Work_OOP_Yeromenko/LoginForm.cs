@@ -13,14 +13,21 @@ namespace Course_Work_OOP_Yeromenko
     public partial class LoginForm : Form
     {
 
-        private List<User> users;
+        private List<User> users = new List<User>();
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Role {  get;  set; }
         public LoginForm()
         {
             InitializeComponent();
+            LoadUsers();
+        }
+
+        private void LoadUsers()
+        {
             users = new List<User>
             {
-                new User { Username = "admin", Password = "AD", Role = "Admin" },
-                new User { Username = "user", Password = "US", Role = "User" }
+                new User{ Username = "admin", Password = "admin123", Role = "Admin" },
+                new User { Username = "user", Password = "user123", Role = "User" }
             };
         }
 
@@ -32,19 +39,18 @@ namespace Course_Work_OOP_Yeromenko
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            string username = txtLogin.Text;
-            string password = txtPassword.Text;
+            var user = users.FirstOrDefault(u =>
+           u.Username == txtLogin.Text && u.Password == txtPassword.Text);
 
-            var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user != null)
             {
-                var mainForm = new Form1(user.Role);
-                mainForm.Show();
-                this.Hide();
+                Role = user.Role;
+                DialogResult = DialogResult.OK;
+                Close();
             }
             else
             {
-                MessageBox.Show("Невірне ім'я користувача або пароль.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid username or password.");
             }
         }
     }

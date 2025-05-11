@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txtGang = new TextBox();
             cmbProfession = new ComboBox();
             dtpBirthDate = new DateTimePicker();
             txtCaseStatus = new TextBox();
@@ -60,7 +61,6 @@
             label1 = new Label();
             btnSave = new Button();
             btnCancel = new Button();
-            txtGang = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,8 +102,15 @@
             groupBox1.Size = new Size(843, 686);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Злочинець";
+            groupBox1.Text = "Criminal";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // txtGang
+            // 
+            txtGang.Location = new Point(219, 634);
+            txtGang.Name = "txtGang";
+            txtGang.Size = new Size(584, 37);
+            txtGang.TabIndex = 32;
             // 
             // cmbProfession
             // 
@@ -208,11 +215,11 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Yu Gothic UI", 10F);
-            label15.Location = new Point(24, 649);
+            label15.Location = new Point(24, 643);
             label15.Name = "label15";
-            label15.Size = new Size(134, 28);
+            label15.Size = new Size(63, 28);
             label15.TabIndex = 14;
-            label15.Text = "Угрупування:";
+            label15.Text = "Gang:";
             // 
             // label14
             // 
@@ -220,9 +227,9 @@
             label14.Font = new Font("Yu Gothic UI", 10F);
             label14.Location = new Point(24, 600);
             label14.Name = "label14";
-            label14.Size = new Size(144, 28);
+            label14.Size = new Size(115, 28);
             label14.TabIndex = 13;
-            label14.Text = "Статус справи:";
+            label14.Text = "Case Status:";
             // 
             // label13
             // 
@@ -230,9 +237,9 @@
             label13.Font = new Font("Yu Gothic UI", 10F);
             label13.Location = new Point(24, 556);
             label13.Name = "label13";
-            label13.Size = new Size(125, 28);
+            label13.Size = new Size(109, 28);
             label13.TabIndex = 12;
-            label13.Text = "Знання мов:";
+            label13.Text = "Languages:";
             // 
             // label12
             // 
@@ -240,9 +247,9 @@
             label12.Font = new Font("Yu Gothic UI", 10F);
             label12.Location = new Point(22, 514);
             label12.Name = "label12";
-            label12.Size = new Size(198, 28);
+            label12.Size = new Size(165, 28);
             label12.TabIndex = 11;
-            label12.Text = "Особливі прикмети:";
+            label12.Text = "Distinctive Marks:";
             // 
             // label11
             // 
@@ -250,9 +257,9 @@
             label11.Font = new Font("Yu Gothic UI", 10F);
             label11.Location = new Point(24, 471);
             label11.Name = "label11";
-            label11.Size = new Size(196, 28);
+            label11.Size = new Size(132, 28);
             label11.TabIndex = 10;
-            label11.Text = "Злочинна професія:";
+            label11.Text = "Cr. Profession:";
             // 
             // label10
             // 
@@ -260,9 +267,9 @@
             label10.Font = new Font("Yu Gothic UI", 10F);
             label10.Location = new Point(22, 426);
             label10.Name = "label10";
-            label10.Size = new Size(206, 28);
+            label10.Size = new Size(125, 28);
             label10.TabIndex = 9;
-            label10.Text = "Останнє місце прож.:";
+            label10.Text = "Last Address:";
             // 
             // label9
             // 
@@ -270,9 +277,9 @@
             label9.Font = new Font("Yu Gothic UI", 10F);
             label9.Location = new Point(24, 383);
             label9.Name = "label9";
-            label9.Size = new Size(179, 28);
+            label9.Size = new Size(103, 28);
             label9.TabIndex = 8;
-            label9.Text = "Дата народження:";
+            label9.Text = "Birth Date:";
             // 
             // label8
             // 
@@ -280,9 +287,9 @@
             label8.Font = new Font("Yu Gothic UI", 10F);
             label8.Location = new Point(22, 331);
             label8.Name = "label8";
-            label8.Size = new Size(191, 28);
+            label8.Size = new Size(107, 28);
             label8.TabIndex = 7;
-            label8.Text = "Місце народження:";
+            label8.Text = "Birth Place:";
             // 
             // label7
             // 
@@ -290,19 +297,19 @@
             label7.Font = new Font("Yu Gothic UI", 10F);
             label7.Location = new Point(22, 283);
             label7.Name = "label7";
-            label7.Size = new Size(146, 28);
+            label7.Size = new Size(111, 28);
             label7.TabIndex = 6;
-            label7.Text = "Громадянство:";
+            label7.Text = "Citizenship:";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Yu Gothic UI", 10F);
-            label6.Location = new Point(405, 228);
+            label6.Location = new Point(421, 228);
             label6.Name = "label6";
-            label6.Size = new Size(147, 28);
+            label6.Size = new Size(105, 28);
             label6.TabIndex = 5;
-            label6.Text = "Колір волосся:";
+            label6.Text = "Hair Color:";
             // 
             // label5
             // 
@@ -310,9 +317,9 @@
             label5.Font = new Font("Yu Gothic UI", 10F);
             label5.Location = new Point(24, 228);
             label5.Name = "label5";
-            label5.Size = new Size(118, 28);
+            label5.Size = new Size(99, 28);
             label5.TabIndex = 4;
-            label5.Text = "Колір очей:";
+            label5.Text = "Eye Color:";
             // 
             // label4
             // 
@@ -320,9 +327,9 @@
             label4.Font = new Font("Yu Gothic UI", 10F);
             label4.Location = new Point(24, 183);
             label4.Name = "label4";
-            label4.Size = new Size(61, 28);
+            label4.Size = new Size(75, 28);
             label4.TabIndex = 3;
-            label4.Text = "Зріст:";
+            label4.Text = "Height:";
             // 
             // label3
             // 
@@ -330,9 +337,9 @@
             label3.Font = new Font("Yu Gothic UI", 10F);
             label3.Location = new Point(24, 138);
             label3.Name = "label3";
-            label3.Size = new Size(82, 28);
+            label3.Size = new Size(103, 28);
             label3.TabIndex = 2;
-            label3.Text = "Кличка:";
+            label3.Text = "Nickname:";
             // 
             // label2
             // 
@@ -340,9 +347,9 @@
             label2.Font = new Font("Yu Gothic UI", 10F);
             label2.Location = new Point(24, 92);
             label2.Name = "label2";
-            label2.Size = new Size(50, 28);
+            label2.Size = new Size(110, 28);
             label2.TabIndex = 1;
-            label2.Text = "Ім'я:";
+            label2.Text = "First Name:";
             // 
             // label1
             // 
@@ -350,9 +357,9 @@
             label1.Font = new Font("Yu Gothic UI", 10F);
             label1.Location = new Point(24, 42);
             label1.Name = "label1";
-            label1.Size = new Size(105, 28);
+            label1.Size = new Size(107, 28);
             label1.TabIndex = 0;
-            label1.Text = "Прізвище:";
+            label1.Text = "Last Name:";
             // 
             // btnSave
             // 
@@ -360,7 +367,7 @@
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(112, 34);
             btnSave.TabIndex = 1;
-            btnSave.Text = "Зберегти";
+            btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
@@ -370,15 +377,8 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(112, 34);
             btnCancel.TabIndex = 2;
-            btnCancel.Text = "Скасувати";
+            btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // txtGang
-            // 
-            txtGang.Location = new Point(219, 634);
-            txtGang.Name = "txtGang";
-            txtGang.Size = new Size(584, 37);
-            txtGang.TabIndex = 32;
             // 
             // CriminalForm
             // 

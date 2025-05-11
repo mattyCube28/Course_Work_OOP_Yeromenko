@@ -13,14 +13,21 @@ namespace Course_Work_OOP_Yeromenko
     public partial class DetailsForm : Form
     {
         private Criminal _criminal;
-        public DetailsForm(Criminal criminal)
+        private string _role;
+        public DetailsForm(Criminal criminal, string role)
         {
             InitializeComponent();
 
             _criminal = criminal;
+            _role = role;
             PopulateProfessionComboBox();
             ShowInfo();
             SetFieldsEditable(false);
+            if (_role == "User")
+            {
+                btnSave.Visible = false;
+                btnEdit.Visible = false;
+            }
         }
         private void ShowInfo()
         {

@@ -48,20 +48,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Sitka Small", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Yu Gothic", 12F, FontStyle.Underline, GraphicsUnit.Point, 204);
             label1.Location = new Point(126, 447);
             label1.Name = "label1";
-            label1.Size = new Size(89, 33);
+            label1.Size = new Size(81, 31);
             label1.TabIndex = 1;
             label1.Text = "Login:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Sitka Small", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
+            label2.Font = new Font("Yu Gothic", 12F, FontStyle.Underline, GraphicsUnit.Point, 204);
             label2.Location = new Point(126, 549);
             label2.Name = "label2";
-            label2.Size = new Size(136, 33);
+            label2.Size = new Size(129, 31);
             label2.TabIndex = 2;
             label2.Text = "Password:";
             // 
@@ -81,7 +81,7 @@
             // 
             // btnLogIn
             // 
-            btnLogIn.Font = new Font("Sitka Small", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
+            btnLogIn.Font = new Font("Yu Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             btnLogIn.Location = new Point(439, 631);
             btnLogIn.Name = "btnLogIn";
             btnLogIn.Size = new Size(140, 55);

@@ -16,7 +16,7 @@ namespace Course_Work_OOP_Yeromenko
         public event EventHandler DeleteRequested;
         private Criminal _criminal;
         
-        public CriminalCard(Criminal criminal)
+        public CriminalCard(Criminal criminal, string role)
         {
             InitializeComponent();
             _criminal = criminal;
@@ -31,7 +31,7 @@ namespace Course_Work_OOP_Yeromenko
 
             btnMore.Click += (s, e) =>
             {
-                DetailsForm detailsForm = new DetailsForm(_criminal);
+                DetailsForm detailsForm = new DetailsForm(_criminal, role);
                 if (detailsForm.ShowDialog() == DialogResult.OK)
                 {
                     CriminalUpdated?.Invoke(this, EventArgs.Empty);
@@ -43,7 +43,11 @@ namespace Course_Work_OOP_Yeromenko
                 DeleteRequested?.Invoke(this, EventArgs.Empty);
             };
 
-            
+            if (role == "User")
+            {
+                btnDelete.Visible = false;
+            }
+
         }
 
 

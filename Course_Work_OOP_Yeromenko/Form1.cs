@@ -6,9 +6,12 @@ namespace Course_Work_OOP_Yeromenko
 {
     public partial class Form1 : Form
     {
+
+
         private List<Criminal> criminals = new List<Criminal>();
         private List<string> gangs = new List<string>();
         private string _role;
+
         public Form1(string role)
         {
             InitializeComponent();
@@ -19,11 +22,16 @@ namespace Course_Work_OOP_Yeromenko
             InitializeComponent();
 
         }
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
             LoadFromFile();
             RefreshCards();
+            
+
             flpCriminals.BorderStyle = BorderStyle.FixedSingle;
 
             if (_role == "User")
@@ -32,6 +40,8 @@ namespace Course_Work_OOP_Yeromenko
 
             }
         }
+
+
 
         private void SaveToFile()
         {
@@ -45,7 +55,8 @@ namespace Course_Work_OOP_Yeromenko
             File.WriteAllText("criminals.json", json);
 
         }
-        
+
+
         private void LoadFromFile()
         {
             if (File.Exists("criminals.json"))
@@ -63,6 +74,7 @@ namespace Course_Work_OOP_Yeromenko
 
 
 
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string query = txtSearch.Text.Trim();
@@ -75,9 +87,12 @@ namespace Course_Work_OOP_Yeromenko
                 RefreshCards();
             }
         }
+
+
+
         private void FilterCards(string query)
         {
-           
+
             var filteredCriminals = criminals.Where(c =>
         c.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
         c.LastName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
@@ -99,11 +114,56 @@ namespace Course_Work_OOP_Yeromenko
             flpCriminals.Controls.Clear();
             foreach (var criminal in filteredCriminals)
             {
-                var card = new CriminalCard(criminal);
+                var card = new CriminalCard(criminal, _role);
                 card.CriminalUpdated += CriminalCard_CriminalUpdated;
                 card.DeleteRequested += (s, e) => DeleteCriminal(criminal);
                 flpCriminals.Controls.Add(card);
             }
+        }
+
+
+
+        private void FilterByProperties()
+        {
+
+
+            bool ageFromParsed = int.TryParse(txtAgeFrom.Text, out int ageFrom);
+            bool ageToParsed = int.TryParse(txtAgeTo.Text, out int ageTo);
+
+            var filtered = criminals.Where(c =>
+                (string.IsNullOrWhiteSpace(txtFirstName.Text) || c.FirstName.Contains(txtFirstName.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtLastName.Text) || c.LastName.Contains(txtLastName.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtNickname.Text) || c.Nickname.Contains(txtNickname.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtHeight.Text) || c.Height.ToString().Contains(txtHeight.Text)) &&
+                (string.IsNullOrWhiteSpace(txtHairColor.Text) || c.HairColor.Contains(txtHairColor.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtEyeColor.Text) || c.EyeColor.Contains(txtEyeColor.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtCitizenship.Text) || c.Citizenship.Contains(txtCitizenship.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtMarks.Text) || c.DistinctiveMarks.Contains(txtMarks.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtBirthPlace.Text) || c.BirthPlace.Contains(txtBirthPlace.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (ageFromParsed == false || CalculateAge(c.BirthDate) >= ageFrom) &&
+                (ageToParsed == false || CalculateAge(c.BirthDate) <= ageTo) &&
+                (string.IsNullOrWhiteSpace(txtLastAddress.Text) || c.LastAddress.Contains(txtLastAddress.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtLanguages.Text) || c.Languages.Contains(txtLanguages.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (cmbProfession.SelectedIndex == -1 || c.CriminalProfession.Equals(cmbProfession.SelectedItem.ToString(), StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtCaseStatus.Text) || c.CaseStatus.Contains(txtCaseStatus.Text, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrWhiteSpace(txtGangName.Text) || (c.GangName != null && c.GangName.Contains(txtGangName.Text, StringComparison.OrdinalIgnoreCase)))
+            ).ToList();
+
+            flpCriminals.Controls.Clear();
+            foreach (var criminal in filtered)
+            {
+                var card = new CriminalCard(criminal, _role);
+                card.CriminalUpdated += CriminalCard_CriminalUpdated;
+                card.DeleteRequested += (s, e) => DeleteCriminal(criminal);
+                flpCriminals.Controls.Add(card);
+            }
+        }
+        private int CalculateAge(DateTime birthDate)
+        {
+            var today = DateTime.Today;
+            var age = today.Year - birthDate.Year;
+            if (birthDate > today.AddYears(-age)) age--;
+            return age;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -133,7 +193,7 @@ namespace Course_Work_OOP_Yeromenko
             flpCriminals.Controls.Clear();
             foreach (var criminal in criminals)
             {
-                var card = new CriminalCard(criminal);
+                var card = new CriminalCard(criminal, _role);
                 card.CriminalUpdated += CriminalCard_CriminalUpdated;
                 card.DeleteRequested += (s, e) => DeleteCriminal(criminal);
                 flpCriminals.Controls.Add(card);
@@ -179,16 +239,44 @@ namespace Course_Work_OOP_Yeromenko
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            //System.Windows.Forms.DialogResult result_i = MessageBox.Show("cjenweecn", "meiwkcowewoe", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+
             LoadFromFile();
             RefreshCards();
             flpCriminals.BorderStyle = BorderStyle.FixedSingle;
+
+            cmbProfession.Items.AddRange(new string[]
+            {
+              "Terrorist",
+              "Hacker",
+              "Murderer",
+              "Rapist",
+              "Robber",
+              "Hitman",
+              "Fraudster",
+              "Drugdealer",
+              "Kidnapper"
+              
+
+             });
+
+            cmbProfession.SelectedIndex = -1;
+
 
             if (_role == "User")
             {
                 btnAdd.Visible = false;
 
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            FilterByProperties();
         }
     }
 }

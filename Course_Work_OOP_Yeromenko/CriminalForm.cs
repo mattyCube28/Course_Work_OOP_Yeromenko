@@ -24,7 +24,7 @@ namespace Course_Work_OOP_Yeromenko
             
             
             cmbProfession.Items.AddRange(new string[]
-   {
+            {
         "Terrorist",
         "Hacker",
         "Murderer",
@@ -35,7 +35,9 @@ namespace Course_Work_OOP_Yeromenko
         "Drugdealer",
         "Kidnapper"
 
-   });
+             });
+
+            
         }
 
         public CriminalForm(List<string> gangs, Criminal criminalToEdit) : this(gangs)
