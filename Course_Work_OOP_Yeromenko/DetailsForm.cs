@@ -18,6 +18,7 @@ namespace Course_Work_OOP_Yeromenko
             InitializeComponent();
 
             _criminal = criminal;
+            PopulateProfessionComboBox();
             ShowInfo();
             SetFieldsEditable(false);
         }
@@ -35,10 +36,37 @@ namespace Course_Work_OOP_Yeromenko
             dtpBirthDate.Text = _criminal.BirthDate.ToShortDateString();
             txtLastAddress.Text = _criminal.LastAddress;
             txtLanguages.Text = _criminal.Languages;
-            cmbProfession.Text = _criminal.CriminalProfession;
+
+            if (cmbProfession.Items.Contains(_criminal.CriminalProfession))
+            {
+                cmbProfession.SelectedItem = _criminal.CriminalProfession;
+            }
+            else
+            {
+                cmbProfession.Text = _criminal.CriminalProfession;
+            }
+
             txtCaseStatus.Text = _criminal.CaseStatus;
             txtGang.Text = _criminal.GangName;
 
+        }
+
+        private void PopulateProfessionComboBox()
+        {
+            cmbProfession.Items.Clear();
+            cmbProfession.Items.AddRange(new string[]
+            {
+        "Terrorist",
+        "Hacker",
+        "Murderer",
+        "Rapist",
+        "Robber",
+        "Hitman",
+        "Fraudster",
+        "Drugdealer",
+        "Kidnapper"
+
+            });
         }
 
         private void SetFieldsEditable(bool editable)
@@ -96,7 +124,7 @@ namespace Course_Work_OOP_Yeromenko
             _criminal.BirthDate = DateTime.TryParse(dtpBirthDate.Text, out var birthDate) ? birthDate : _criminal.BirthDate;
             _criminal.LastAddress = txtLastAddress.Text;
             _criminal.Languages = txtLanguages.Text;
-            _criminal.CriminalProfession = cmbProfession.SelectedItem?.ToString();
+            _criminal.CriminalProfession = cmbProfession.Text;
             _criminal.CaseStatus = txtCaseStatus.Text;
             _criminal.GangName = txtGang.Text;
 

@@ -45,50 +45,7 @@ namespace Course_Work_OOP_Yeromenko
             File.WriteAllText("criminals.json", json);
 
         }
-        //private void SaveToFile()
-        //{
-        //    var options = new JsonSerializerSettings
-        //    {
-        //        Formatting = Formatting.Indented,
-        //        TypeNameHandling = TypeNameHandling.All
-        //    };
-        //    string json = JsonConvert.SerializeObject(criminals, options);
-        //    try
-        //    {
-        //        File.WriteAllText("criminals.json", json);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Помилка при збереженні у файл: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //    }
-        //}
-
-        //private void LoadFromFile()
-        //{
-        //    if (File.Exists("criminals.json"))
-        //    {
-        //        try
-        //        {
-        //            string json = File.ReadAllText("criminals.json");
-        //            var options = new JsonSerializerSettings
-        //            {
-        //                TypeNameHandling = TypeNameHandling.All
-        //            };
-        //            criminals = JsonConvert.DeserializeObject<List<Criminal>>(json, options) ?? new List<Criminal>();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Помилка при завантаженні з файлу: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            criminals = new List<Criminal>(); 
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        criminals = new List<Criminal>(); 
-        //    }
-        //}
+        
         private void LoadFromFile()
         {
             if (File.Exists("criminals.json"))
@@ -120,6 +77,7 @@ namespace Course_Work_OOP_Yeromenko
         }
         private void FilterCards(string query)
         {
+           
             var filteredCriminals = criminals.Where(c =>
         c.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
         c.LastName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
