@@ -1,4 +1,6 @@
 using System.Drawing.Text;
+using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -30,7 +32,7 @@ namespace Course_Work_OOP_Yeromenko
 
             LoadFromFile();
             RefreshCards();
-            
+
 
             flpCriminals.BorderStyle = BorderStyle.FixedSingle;
 
@@ -129,7 +131,77 @@ namespace Course_Work_OOP_Yeromenko
 
             bool ageFromParsed = int.TryParse(txtAgeFrom.Text, out int ageFrom);
             bool ageToParsed = int.TryParse(txtAgeTo.Text, out int ageTo);
+            if (!string.IsNullOrWhiteSpace(txtAgeFrom.Text) && !int.TryParse(txtAgeFrom.Text, out _))
+            {
+                MessageBox.Show("Please enter a valid number in the 'Age From' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (!string.IsNullOrWhiteSpace(txtAgeTo.Text) && !int.TryParse(txtAgeTo.Text, out _))
+            {
+                MessageBox.Show("Please enter a valid number in the 'Age To' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (ageFromParsed && ageToParsed && ageFrom > ageTo)
+            {
+                MessageBox.Show("'Age From' cannot be greater than 'Age To'.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtHeight.Text) && !int.TryParse(txtHeight.Text, out _))
+            {
+                MessageBox.Show("Please enter a valid number in the 'Height' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (!IsTextOnly(txtFirstName.Text))
+            {
+                MessageBox.Show("The 'First Name' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtLastName.Text))
+            {
+                MessageBox.Show("The 'Last Name' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtNickname.Text))
+            {
+                MessageBox.Show("The 'Nickname' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtHairColor.Text))
+            {
+                MessageBox.Show("The 'Hair Color' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtEyeColor.Text))
+            {
+                MessageBox.Show("The 'Eye Color' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtCitizenship.Text))
+            {
+                MessageBox.Show("The 'Citizenship' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtBirthPlace.Text))
+            {
+                MessageBox.Show("The 'Birth Place' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsTextOnly(txtLanguages.Text))
+            {
+                MessageBox.Show("The 'Languages' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var filtered = criminals.Where(c =>
                 (string.IsNullOrWhiteSpace(txtFirstName.Text) || c.FirstName.Contains(txtFirstName.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtLastName.Text) || c.LastName.Contains(txtLastName.Text, StringComparison.OrdinalIgnoreCase)) &&
@@ -157,6 +229,10 @@ namespace Course_Work_OOP_Yeromenko
                 card.DeleteRequested += (s, e) => DeleteCriminal(criminal);
                 flpCriminals.Controls.Add(card);
             }
+        }
+        private bool IsTextOnly(string input)
+        {
+            return string.IsNullOrWhiteSpace(input) || input.All(c => char.IsLetter(c) || char.IsWhiteSpace(c));
         }
         private int CalculateAge(DateTime birthDate)
         {
@@ -255,7 +331,7 @@ namespace Course_Work_OOP_Yeromenko
               "Fraudster",
               "Drugdealer",
               "Kidnapper"
-              
+
 
              });
 
@@ -265,8 +341,9 @@ namespace Course_Work_OOP_Yeromenko
             if (_role == "User")
             {
                 btnAdd.Visible = false;
-
             }
+            pictureBox1.Image = Image.FromFile("C:\\Users\\Dell\\OneDrive\\Desktop\\Interpol_(Logo).png");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -277,6 +354,18 @@ namespace Course_Work_OOP_Yeromenko
         private void btnAdvancedSearch_Click(object sender, EventArgs e)
         {
             FilterByProperties();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
         }
     }
 }

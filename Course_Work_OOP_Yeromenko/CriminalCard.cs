@@ -26,7 +26,7 @@ namespace Course_Work_OOP_Yeromenko
             lblName.Text = $"Name: {_criminal.FirstName}";
             lblLastName.Text = $"Last name: {_criminal.LastName}";
             lblNickname.Text = $"Nickname: {_criminal.Nickname}";
-            lblProfession.Text = $"Profession: {_criminal.CriminalProfession}";
+            lblProfession.Text = $"Cr.Profession: {_criminal.CriminalProfession}";
             lblBirthDate.Text = $"Birth date: {_criminal.BirthDate.ToShortDateString()}";
 
             btnMore.Click += (s, e) =>
@@ -40,7 +40,16 @@ namespace Course_Work_OOP_Yeromenko
 
             btnDelete.Click += (s, e) =>
             {
-                DeleteRequested?.Invoke(this, EventArgs.Empty);
+                var result = MessageBox.Show(
+                "Are you sure you want to delete?",
+                "Confirm Deletion",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+                );
+                if (result == DialogResult.OK)
+                {
+                    DeleteRequested?.Invoke(this, EventArgs.Empty);
+                }
             };
 
             if (role == "User")

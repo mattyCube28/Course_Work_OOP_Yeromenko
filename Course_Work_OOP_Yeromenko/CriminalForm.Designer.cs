@@ -99,7 +99,7 @@
             groupBox1.Font = new Font("Yu Gothic UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
             groupBox1.Location = new Point(38, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(843, 686);
+            groupBox1.Size = new Size(843, 734);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Criminal";
@@ -107,115 +107,144 @@
             // 
             // txtGang
             // 
-            txtGang.Location = new Point(219, 634);
+            txtGang.Font = new Font("Yu Gothic UI", 9F);
+            txtGang.Location = new Point(162, 679);
+            txtGang.Multiline = true;
             txtGang.Name = "txtGang";
-            txtGang.Size = new Size(584, 37);
+            txtGang.Size = new Size(647, 32);
             txtGang.TabIndex = 32;
             // 
             // cmbProfession
             // 
+            cmbProfession.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             cmbProfession.FormattingEnabled = true;
-            cmbProfession.Location = new Point(219, 460);
+            cmbProfession.Location = new Point(162, 488);
             cmbProfession.Name = "cmbProfession";
-            cmbProfession.Size = new Size(584, 38);
+            cmbProfession.Size = new Size(646, 33);
             cmbProfession.TabIndex = 31;
             // 
             // dtpBirthDate
             // 
-            dtpBirthDate.Location = new Point(219, 374);
+            dtpBirthDate.CalendarFont = new Font("Yu Gothic UI", 9F);
+            dtpBirthDate.Font = new Font("Yu Gothic UI", 9F);
+            dtpBirthDate.Location = new Point(161, 398);
             dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(584, 37);
+            dtpBirthDate.Size = new Size(647, 31);
             dtpBirthDate.TabIndex = 30;
             // 
             // txtCaseStatus
             // 
-            txtCaseStatus.Location = new Point(219, 591);
+            txtCaseStatus.Font = new Font("Yu Gothic UI", 9F);
+            txtCaseStatus.Location = new Point(162, 632);
+            txtCaseStatus.Multiline = true;
             txtCaseStatus.Name = "txtCaseStatus";
-            txtCaseStatus.Size = new Size(584, 37);
+            txtCaseStatus.Size = new Size(647, 28);
             txtCaseStatus.TabIndex = 28;
             // 
             // txtLanguages
             // 
-            txtLanguages.Location = new Point(219, 548);
+            txtLanguages.Font = new Font("Yu Gothic UI", 9F);
+            txtLanguages.Location = new Point(162, 581);
+            txtLanguages.Multiline = true;
             txtLanguages.Name = "txtLanguages";
-            txtLanguages.Size = new Size(584, 37);
+            txtLanguages.Size = new Size(646, 32);
             txtLanguages.TabIndex = 27;
             // 
             // txtDistinctiveMarks
             // 
-            txtDistinctiveMarks.Location = new Point(219, 505);
+            txtDistinctiveMarks.Font = new Font("Yu Gothic UI", 9F);
+            txtDistinctiveMarks.Location = new Point(224, 536);
+            txtDistinctiveMarks.Multiline = true;
             txtDistinctiveMarks.Name = "txtDistinctiveMarks";
-            txtDistinctiveMarks.Size = new Size(584, 37);
+            txtDistinctiveMarks.Size = new Size(584, 29);
             txtDistinctiveMarks.TabIndex = 26;
             // 
             // txtLastAddress
             // 
-            txtLastAddress.Location = new Point(219, 417);
+            txtLastAddress.Font = new Font("Yu Gothic UI", 9F);
+            txtLastAddress.Location = new Point(162, 450);
+            txtLastAddress.Multiline = true;
             txtLastAddress.Name = "txtLastAddress";
-            txtLastAddress.Size = new Size(584, 37);
+            txtLastAddress.Size = new Size(646, 28);
             txtLastAddress.TabIndex = 24;
             // 
             // txtBirthPlace
             // 
-            txtBirthPlace.Location = new Point(219, 322);
+            txtBirthPlace.Font = new Font("Yu Gothic UI", 9F);
+            txtBirthPlace.Location = new Point(161, 353);
+            txtBirthPlace.Multiline = true;
             txtBirthPlace.Name = "txtBirthPlace";
-            txtBirthPlace.Size = new Size(584, 37);
+            txtBirthPlace.Size = new Size(647, 30);
             txtBirthPlace.TabIndex = 22;
             // 
             // txtCitizenship
             // 
-            txtCitizenship.Location = new Point(174, 274);
+            txtCitizenship.Font = new Font("Yu Gothic UI", 9F);
+            txtCitizenship.Location = new Point(162, 297);
+            txtCitizenship.Multiline = true;
             txtCitizenship.Name = "txtCitizenship";
-            txtCitizenship.Size = new Size(629, 37);
+            txtCitizenship.Size = new Size(647, 33);
             txtCitizenship.TabIndex = 21;
             // 
             // txtHairColor
             // 
-            txtHairColor.Location = new Point(558, 219);
+            txtHairColor.Font = new Font("Yu Gothic UI", 9F);
+            txtHairColor.Location = new Point(563, 250);
+            txtHairColor.Multiline = true;
             txtHairColor.Name = "txtHairColor";
-            txtHairColor.Size = new Size(245, 37);
+            txtHairColor.Size = new Size(245, 28);
             txtHairColor.TabIndex = 20;
             // 
             // txtEyeColor
             // 
-            txtEyeColor.Location = new Point(156, 219);
+            txtEyeColor.Font = new Font("Yu Gothic UI", 9F);
+            txtEyeColor.Location = new Point(162, 254);
+            txtEyeColor.Multiline = true;
             txtEyeColor.Name = "txtEyeColor";
-            txtEyeColor.Size = new Size(243, 37);
+            txtEyeColor.Size = new Size(243, 28);
             txtEyeColor.TabIndex = 19;
             // 
             // txtHeight
             // 
-            txtHeight.Location = new Point(156, 172);
+            txtHeight.Font = new Font("Yu Gothic UI", 9F);
+            txtHeight.Location = new Point(162, 201);
+            txtHeight.Multiline = true;
             txtHeight.Name = "txtHeight";
-            txtHeight.Size = new Size(647, 37);
+            txtHeight.Size = new Size(647, 30);
             txtHeight.TabIndex = 18;
             // 
             // txtNickname
             // 
-            txtNickname.Location = new Point(156, 129);
+            txtNickname.Font = new Font("Yu Gothic UI", 9F);
+            txtNickname.Location = new Point(162, 152);
+            txtNickname.Multiline = true;
             txtNickname.Name = "txtNickname";
-            txtNickname.Size = new Size(647, 37);
+            txtNickname.Size = new Size(647, 31);
             txtNickname.TabIndex = 17;
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(156, 83);
+            txtFirstName.Font = new Font("Yu Gothic UI", 9F);
+            txtFirstName.Location = new Point(162, 101);
+            txtFirstName.Multiline = true;
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(647, 37);
+            txtFirstName.Size = new Size(647, 31);
             txtFirstName.TabIndex = 16;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(156, 33);
+            txtLastName.Font = new Font("Yu Gothic UI", 9F);
+            txtLastName.Location = new Point(162, 56);
+            txtLastName.Multiline = true;
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(647, 37);
+            txtLastName.Size = new Size(647, 29);
             txtLastName.TabIndex = 15;
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Yu Gothic UI", 10F);
-            label15.Location = new Point(24, 643);
+            label15.Location = new Point(24, 683);
             label15.Name = "label15";
             label15.Size = new Size(63, 28);
             label15.TabIndex = 14;
@@ -225,7 +254,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Yu Gothic UI", 10F);
-            label14.Location = new Point(24, 600);
+            label14.Location = new Point(22, 632);
             label14.Name = "label14";
             label14.Size = new Size(115, 28);
             label14.TabIndex = 13;
@@ -235,7 +264,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Yu Gothic UI", 10F);
-            label13.Location = new Point(24, 556);
+            label13.Location = new Point(22, 585);
             label13.Name = "label13";
             label13.Size = new Size(109, 28);
             label13.TabIndex = 12;
@@ -245,7 +274,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Yu Gothic UI", 10F);
-            label12.Location = new Point(22, 514);
+            label12.Location = new Point(24, 540);
             label12.Name = "label12";
             label12.Size = new Size(165, 28);
             label12.TabIndex = 11;
@@ -255,7 +284,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Yu Gothic UI", 10F);
-            label11.Location = new Point(24, 471);
+            label11.Location = new Point(24, 493);
             label11.Name = "label11";
             label11.Size = new Size(132, 28);
             label11.TabIndex = 10;
@@ -265,7 +294,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Yu Gothic UI", 10F);
-            label10.Location = new Point(22, 426);
+            label10.Location = new Point(22, 450);
             label10.Name = "label10";
             label10.Size = new Size(125, 28);
             label10.TabIndex = 9;
@@ -275,7 +304,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Yu Gothic UI", 10F);
-            label9.Location = new Point(24, 383);
+            label9.Location = new Point(20, 407);
             label9.Name = "label9";
             label9.Size = new Size(103, 28);
             label9.TabIndex = 8;
@@ -285,7 +314,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Yu Gothic UI", 10F);
-            label8.Location = new Point(22, 331);
+            label8.Location = new Point(24, 357);
             label8.Name = "label8";
             label8.Size = new Size(107, 28);
             label8.TabIndex = 7;
@@ -295,7 +324,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI", 10F);
-            label7.Location = new Point(22, 283);
+            label7.Location = new Point(22, 297);
             label7.Name = "label7";
             label7.Size = new Size(111, 28);
             label7.TabIndex = 6;
@@ -305,7 +334,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Yu Gothic UI", 10F);
-            label6.Location = new Point(421, 228);
+            label6.Location = new Point(426, 254);
             label6.Name = "label6";
             label6.Size = new Size(105, 28);
             label6.TabIndex = 5;
@@ -315,7 +344,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI", 10F);
-            label5.Location = new Point(24, 228);
+            label5.Location = new Point(24, 254);
             label5.Name = "label5";
             label5.Size = new Size(99, 28);
             label5.TabIndex = 4;
@@ -325,7 +354,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI", 10F);
-            label4.Location = new Point(24, 183);
+            label4.Location = new Point(24, 205);
             label4.Name = "label4";
             label4.Size = new Size(75, 28);
             label4.TabIndex = 3;
@@ -335,7 +364,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Yu Gothic UI", 10F);
-            label3.Location = new Point(24, 138);
+            label3.Location = new Point(24, 152);
             label3.Name = "label3";
             label3.Size = new Size(103, 28);
             label3.TabIndex = 2;
@@ -345,7 +374,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI", 10F);
-            label2.Location = new Point(24, 92);
+            label2.Location = new Point(20, 101);
             label2.Name = "label2";
             label2.Size = new Size(110, 28);
             label2.TabIndex = 1;
@@ -355,7 +384,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI", 10F);
-            label1.Location = new Point(24, 42);
+            label1.Location = new Point(23, 56);
             label1.Name = "label1";
             label1.Size = new Size(107, 28);
             label1.TabIndex = 0;
@@ -363,7 +392,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(167, 704);
+            btnSave.Location = new Point(142, 745);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(112, 34);
             btnSave.TabIndex = 1;
@@ -373,18 +402,19 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(578, 704);
+            btnCancel.Location = new Point(584, 745);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(112, 34);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click_1;
             // 
             // CriminalForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(916, 750);
+            ClientSize = new Size(916, 836);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(groupBox1);

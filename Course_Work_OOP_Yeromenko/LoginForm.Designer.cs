@@ -39,9 +39,9 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(301, 56);
+            pictureBox1.Location = new Point(380, 54);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(440, 304);
+            pictureBox1.Size = new Size(377, 277);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -67,14 +67,14 @@
             // 
             // txtLogin
             // 
-            txtLogin.Location = new Point(301, 450);
+            txtLogin.Location = new Point(349, 448);
             txtLogin.Name = "txtLogin";
             txtLogin.Size = new Size(440, 31);
             txtLogin.TabIndex = 3;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(301, 549);
+            txtPassword.Location = new Point(349, 549);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(440, 31);
             txtPassword.TabIndex = 4;
@@ -82,7 +82,7 @@
             // btnLogIn
             // 
             btnLogIn.Font = new Font("Yu Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnLogIn.Location = new Point(439, 631);
+            btnLogIn.Location = new Point(494, 631);
             btnLogIn.Name = "btnLogIn";
             btnLogIn.Size = new Size(140, 55);
             btnLogIn.TabIndex = 5;

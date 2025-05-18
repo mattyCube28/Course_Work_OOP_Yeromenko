@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txtGang = new TextBox();
             cmbProfession = new ComboBox();
             dtpBirthDate = new DateTimePicker();
             txtCaseStatus = new TextBox();
@@ -61,7 +62,6 @@
             btnClose = new Button();
             btnSave = new Button();
             btnEdit = new Button();
-            txtGang = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -104,12 +104,19 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Criminal Details";
             // 
+            // txtGang
+            // 
+            txtGang.Location = new Point(148, 550);
+            txtGang.Name = "txtGang";
+            txtGang.Size = new Size(557, 31);
+            txtGang.TabIndex = 32;
+            // 
             // cmbProfession
             // 
             cmbProfession.FormattingEnabled = true;
-            cmbProfession.Location = new Point(148, 397);
+            cmbProfession.Location = new Point(163, 397);
             cmbProfession.Name = "cmbProfession";
-            cmbProfession.Size = new Size(557, 33);
+            cmbProfession.Size = new Size(542, 33);
             cmbProfession.TabIndex = 31;
             // 
             // dtpBirthDate
@@ -242,11 +249,11 @@
             // lblCriminalProfession
             // 
             lblCriminalProfession.AutoSize = true;
-            lblCriminalProfession.Location = new Point(34, 406);
+            lblCriminalProfession.Location = new Point(32, 405);
             lblCriminalProfession.Name = "lblCriminalProfession";
-            lblCriminalProfession.Size = new Size(99, 25);
+            lblCriminalProfession.Size = new Size(125, 25);
             lblCriminalProfession.TabIndex = 10;
-            lblCriminalProfession.Text = "Profession:";
+            lblCriminalProfession.Text = "Cr. Profession:";
             // 
             // lblLastAddress
             // 
@@ -367,13 +374,6 @@
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
-            // 
-            // txtGang
-            // 
-            txtGang.Location = new Point(148, 550);
-            txtGang.Name = "txtGang";
-            txtGang.Size = new Size(557, 31);
-            txtGang.TabIndex = 32;
             // 
             // DetailsForm
             // 

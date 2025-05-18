@@ -32,6 +32,8 @@ namespace Course_Work_OOP_Yeromenko
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnExit = new Button();
+            pictureBox1 = new PictureBox();
             panel2 = new Panel();
             cmbProfession = new ComboBox();
             txtGangName = new TextBox();
@@ -74,11 +76,14 @@ namespace Course_Work_OOP_Yeromenko
             btnAdd = new Button();
             label1 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnExit);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(txtSearch);
@@ -88,8 +93,27 @@ namespace Course_Work_OOP_Yeromenko
             panel1.Font = new Font("Segoe UI", 9F);
             panel1.Location = new Point(55, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1159, 729);
+            panel1.Size = new Size(1185, 782);
             panel1.TabIndex = 1;
+            // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(1028, 732);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(112, 34);
+            btnExit.TabIndex = 15;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(15, 16);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(701, 75);
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel2
             // 
@@ -282,7 +306,7 @@ namespace Course_Work_OOP_Yeromenko
             // btnAdvancedSearch
             // 
             btnAdvancedSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnAdvancedSearch.Location = new Point(119, 646);
+            btnAdvancedSearch.Location = new Point(140, 645);
             btnAdvancedSearch.Name = "btnAdvancedSearch";
             btnAdvancedSearch.Size = new Size(112, 34);
             btnAdvancedSearch.TabIndex = 30;
@@ -364,11 +388,11 @@ namespace Course_Work_OOP_Yeromenko
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 11F, FontStyle.Underline, GraphicsUnit.Point, 204);
-            label12.Location = new Point(119, 373);
+            label12.Location = new Point(164, 377);
             label12.Name = "label12";
-            label12.Size = new Size(114, 30);
+            label12.Size = new Size(57, 30);
             label12.TabIndex = 22;
-            label12.Text = "Birth Date:";
+            label12.Text = "Age:";
             // 
             // label11
             // 
@@ -473,7 +497,7 @@ namespace Course_Work_OOP_Yeromenko
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(650, 108);
+            btnSearch.Location = new Point(652, 108);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(112, 34);
             btnSearch.TabIndex = 11;
@@ -523,13 +547,14 @@ namespace Course_Work_OOP_Yeromenko
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1236, 750);
+            ClientSize = new Size(1272, 818);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load_1;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -578,5 +603,7 @@ namespace Course_Work_OOP_Yeromenko
         private TextBox txtGangName;
         private TextBox txtCaseStatus;
         private TextBox txtLanguages;
+        private PictureBox pictureBox1;
+        private Button btnExit;
     }
 }
