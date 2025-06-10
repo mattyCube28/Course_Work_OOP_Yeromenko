@@ -9,9 +9,8 @@ namespace Course_Work_OOP_Yeromenko
     public partial class Form1 : Form
     {
 
-
-        private List<Criminal> criminals = new List<Criminal>();
-        private List<string> gangs = new List<string>();
+        private CriminalCollection criminalCollection = new CriminalCollection();
+        private List<Criminal> _lastFilteredCriminals = new List<Criminal>();
         private string _role;
 
         public Form1(string role)
@@ -19,60 +18,41 @@ namespace Course_Work_OOP_Yeromenko
             InitializeComponent();
             _role = role;
         }
-        public Form1()
+
+
+
+        private void Form1_Load_1(object sender, EventArgs e)
         {
-            InitializeComponent();
-
-        }
-
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            LoadFromFile();
             RefreshCards();
-
-
             flpCriminals.BorderStyle = BorderStyle.FixedSingle;
+
+            cmbProfession.Items.AddRange(new string[]
+            {
+              "Terrorist",
+              "Hacker",
+              "Murderer",
+              "Rapist",
+              "Robber",
+              "Hitman",
+              "Fraudster",
+              "Drugdealer",
+              "Kidnapper"
+
+
+             });
+
+            cmbProfession.SelectedIndex = -1;
+
 
             if (_role == "User")
             {
                 btnAdd.Visible = false;
-
             }
+            pictureBox1.Image = Image.FromFile("C:\\Users\\Dell\\OneDrive\\Desktop\\Interpol_(Logo).png");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
 
-
-        private void SaveToFile()
-        {
-            var options = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-                TypeNameHandling = TypeNameHandling.All
-
-            };
-            string json = JsonConvert.SerializeObject(criminals, options);
-            File.WriteAllText("criminals.json", json);
-
-        }
-
-
-        private void LoadFromFile()
-        {
-            if (File.Exists("criminals.json"))
-            {
-                string json = File.ReadAllText("criminals.json");
-                var options = new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.All
-
-                };
-                criminals = JsonConvert.DeserializeObject<List<Criminal>>(json, options) ?? new List<Criminal>();
-
-            }
-        }
 
 
 
@@ -95,7 +75,7 @@ namespace Course_Work_OOP_Yeromenko
         private void FilterCards(string query)
         {
 
-            var filteredCriminals = criminals.Where(c =>
+            _lastFilteredCriminals = criminalCollection.criminals.Where(c =>
         c.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
         c.LastName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
         c.Nickname.Contains(query, StringComparison.OrdinalIgnoreCase) ||
@@ -114,7 +94,7 @@ namespace Course_Work_OOP_Yeromenko
     ).ToList();
 
             flpCriminals.Controls.Clear();
-            foreach (var criminal in filteredCriminals)
+            foreach (var criminal in _lastFilteredCriminals)
             {
                 var card = new CriminalCard(criminal, _role);
                 card.CriminalUpdated += CriminalCard_CriminalUpdated;
@@ -128,9 +108,11 @@ namespace Course_Work_OOP_Yeromenko
         private void FilterByProperties()
         {
 
-
+            bool heightFromParsed = int.TryParse(txtHeight.Text, out int heightFrom);
+            bool heightToParsed = int.TryParse(txtHeightTo.Text, out int heightTo);
             bool ageFromParsed = int.TryParse(txtAgeFrom.Text, out int ageFrom);
             bool ageToParsed = int.TryParse(txtAgeTo.Text, out int ageTo);
+
             if (!string.IsNullOrWhiteSpace(txtAgeFrom.Text) && !int.TryParse(txtAgeFrom.Text, out _))
             {
                 MessageBox.Show("Please enter a valid number in the 'Age From' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -151,6 +133,17 @@ namespace Course_Work_OOP_Yeromenko
             if (!string.IsNullOrWhiteSpace(txtHeight.Text) && !int.TryParse(txtHeight.Text, out _))
             {
                 MessageBox.Show("Please enter a valid number in the 'Height' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(txtHeightTo.Text) && !heightToParsed)
+            {
+                MessageBox.Show("Please enter a valid number in the 'Height To' field.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (heightFromParsed && heightToParsed && heightFrom > heightTo)
+            {
+                MessageBox.Show("'Height From' cannot be greater than 'Height To'.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -202,11 +195,12 @@ namespace Course_Work_OOP_Yeromenko
                 MessageBox.Show("The 'Languages' field must contain letters only.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var filtered = criminals.Where(c =>
+            var filtered = criminalCollection.criminals.Where(c =>
                 (string.IsNullOrWhiteSpace(txtFirstName.Text) || c.FirstName.Contains(txtFirstName.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtLastName.Text) || c.LastName.Contains(txtLastName.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtNickname.Text) || c.Nickname.Contains(txtNickname.Text, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrWhiteSpace(txtHeight.Text) || c.Height.ToString().Contains(txtHeight.Text)) &&
+                (!heightFromParsed || c.Height >= heightFrom) &&
+                (!heightToParsed || c.Height <= heightTo) &&
                 (string.IsNullOrWhiteSpace(txtHairColor.Text) || c.HairColor.Contains(txtHairColor.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtEyeColor.Text) || c.EyeColor.Contains(txtEyeColor.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtCitizenship.Text) || c.Citizenship.Contains(txtCitizenship.Text, StringComparison.OrdinalIgnoreCase)) &&
@@ -220,6 +214,7 @@ namespace Course_Work_OOP_Yeromenko
                 (string.IsNullOrWhiteSpace(txtCaseStatus.Text) || c.CaseStatus.Contains(txtCaseStatus.Text, StringComparison.OrdinalIgnoreCase)) &&
                 (string.IsNullOrWhiteSpace(txtGangName.Text) || (c.GangName != null && c.GangName.Contains(txtGangName.Text, StringComparison.OrdinalIgnoreCase)))
             ).ToList();
+            _lastFilteredCriminals = filtered;
 
             flpCriminals.Controls.Clear();
             foreach (var criminal in filtered)
@@ -242,32 +237,59 @@ namespace Course_Work_OOP_Yeromenko
             return age;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ExportFilteredToTextFile(List<Criminal> criminals)
         {
+            if (criminals == null || criminals.Count == 0)
+            {
+                MessageBox.Show("No data to export.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Text File (*.txt)|*.txt";
+                saveFileDialog.FileName = "FilteredCriminals.txt";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        foreach (var c in criminals)
+                        {
+                            writer.WriteLine($"Name: {c.FirstName} {c.LastName} | Nickname: {c.Nickname} | Profession: {c.CriminalProfession}");
+                            writer.WriteLine($"Birth: {c.BirthPlace}, {c.BirthDate.ToShortDateString()} | Citizenship: {c.Citizenship}");
+                            writer.WriteLine($"Height: {c.Height}, Hair: {c.HairColor}, Eyes: {c.EyeColor}");
+                            writer.WriteLine($"Address: {c.LastAddress} | Case: {c.CaseStatus} | Gang: {c.GangName}");
+                            writer.WriteLine($"Languages: {c.Languages}");
+                            writer.WriteLine("-------------------------------------------------------------");
+                        }
+                    }
+
+                    MessageBox.Show("File saved successfully.", "Task complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExportFilteredToTextFile(_lastFilteredCriminals);
+        }
+        private void btnAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            FilterByProperties();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var criminalForm = new CriminalForm(gangs);
-            if (criminalForm.ShowDialog() == DialogResult.OK)
-            {
-                Criminal newCriminal = criminalForm.CriminalData;
-                criminals.Add(newCriminal);
-                RefreshCards();
-                SaveToFile();
-            }
-
+            criminalCollection.Add();
+            RefreshCards();
         }
-        private void RefreshCards()
+        public void RefreshCards()
         {
             flpCriminals.Controls.Clear();
-            foreach (var criminal in criminals)
+            foreach (var criminal in criminalCollection.criminals)
             {
                 var card = new CriminalCard(criminal, _role);
                 card.CriminalUpdated += CriminalCard_CriminalUpdated;
@@ -278,87 +300,18 @@ namespace Course_Work_OOP_Yeromenko
         }
 
 
-        private void CriminalCard_CriminalUpdated(object sender, EventArgs e)
+        private void CriminalCard_CriminalUpdated(object sender, UpdateInfoEventArgs e)
         {
 
-            SaveToFile();
+            criminalCollection.Update(e.oldCriminal, e.newCriminal);
             RefreshCards();
 
         }
 
         private void DeleteCriminal(Criminal criminal)
         {
-            criminals.Remove(criminal);
+            criminalCollection.Remove(criminal);
             RefreshCards();
-            SaveToFile();
-        }
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (flpCriminals.Controls.Count == 0)
-            {
-                return;
-            }
-        }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveToFile();
-        }
-
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-
-            LoadFromFile();
-            RefreshCards();
-            flpCriminals.BorderStyle = BorderStyle.FixedSingle;
-
-            cmbProfession.Items.AddRange(new string[]
-            {
-              "Terrorist",
-              "Hacker",
-              "Murderer",
-              "Rapist",
-              "Robber",
-              "Hitman",
-              "Fraudster",
-              "Drugdealer",
-              "Kidnapper"
-
-
-             });
-
-            cmbProfession.SelectedIndex = -1;
-
-
-            if (_role == "User")
-            {
-                btnAdd.Visible = false;
-            }
-            pictureBox1.Image = Image.FromFile("C:\\Users\\Dell\\OneDrive\\Desktop\\Interpol_(Logo).png");
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdvancedSearch_Click(object sender, EventArgs e)
-        {
-            FilterByProperties();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -367,5 +320,7 @@ namespace Course_Work_OOP_Yeromenko
             loginForm.Show();
             this.Hide();
         }
+
+        
     }
 }

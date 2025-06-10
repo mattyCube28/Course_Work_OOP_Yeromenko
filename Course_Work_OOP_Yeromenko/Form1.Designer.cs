@@ -35,6 +35,10 @@ namespace Course_Work_OOP_Yeromenko
             btnExit = new Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            label21 = new Label();
+            label20 = new Label();
+            txtHeightTo = new TextBox();
+            button1 = new Button();
             cmbProfession = new ComboBox();
             txtGangName = new TextBox();
             txtCaseStatus = new TextBox();
@@ -113,11 +117,14 @@ namespace Course_Work_OOP_Yeromenko
             pictureBox1.Size = new Size(701, 75);
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(label21);
+            panel2.Controls.Add(label20);
+            panel2.Controls.Add(txtHeightTo);
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(cmbProfession);
             panel2.Controls.Add(txtGangName);
             panel2.Controls.Add(txtCaseStatus);
@@ -158,6 +165,45 @@ namespace Course_Work_OOP_Yeromenko
             panel2.Name = "panel2";
             panel2.Size = new Size(370, 696);
             panel2.TabIndex = 13;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label21.Location = new Point(105, 169);
+            label21.Name = "label21";
+            label21.Size = new Size(50, 21);
+            label21.TabIndex = 51;
+            label21.Text = "From:";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label20.Location = new Point(245, 168);
+            label20.Name = "label20";
+            label20.Size = new Size(28, 21);
+            label20.TabIndex = 50;
+            label20.Text = "To:";
+            // 
+            // txtHeightTo
+            // 
+            txtHeightTo.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            txtHeightTo.Location = new Point(279, 162);
+            txtHeightTo.Name = "txtHeightTo";
+            txtHeightTo.Size = new Size(68, 31);
+            txtHeightTo.TabIndex = 49;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button1.Location = new Point(218, 647);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 48;
+            button1.Text = "Export";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // cmbProfession
             // 
@@ -270,10 +316,10 @@ namespace Course_Work_OOP_Yeromenko
             // txtHeight
             // 
             txtHeight.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            txtHeight.Location = new Point(128, 163);
+            txtHeight.Location = new Point(161, 163);
             txtHeight.Multiline = true;
             txtHeight.Name = "txtHeight";
-            txtHeight.Size = new Size(219, 30);
+            txtHeight.Size = new Size(78, 30);
             txtHeight.TabIndex = 34;
             // 
             // txtNickname
@@ -306,7 +352,7 @@ namespace Course_Work_OOP_Yeromenko
             // btnAdvancedSearch
             // 
             btnAdvancedSearch.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnAdvancedSearch.Location = new Point(140, 645);
+            btnAdvancedSearch.Location = new Point(53, 647);
             btnAdvancedSearch.Name = "btnAdvancedSearch";
             btnAdvancedSearch.Size = new Size(112, 34);
             btnAdvancedSearch.TabIndex = 30;
@@ -453,7 +499,6 @@ namespace Course_Work_OOP_Yeromenko
             label6.Size = new Size(69, 25);
             label6.TabIndex = 16;
             label6.Text = "Height:";
-            label6.Click += label6_Click;
             // 
             // label5
             // 
@@ -534,14 +579,10 @@ namespace Course_Work_OOP_Yeromenko
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 9F);
-            label1.Location = new Point(15, 117);
+            label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(129, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Type to search:";
-            label1.Click += label1_Click;
+            label1.Size = new Size(100, 23);
+            label1.TabIndex = 16;
             // 
             // Form1
             // 
@@ -605,5 +646,9 @@ namespace Course_Work_OOP_Yeromenko
         private TextBox txtLanguages;
         private PictureBox pictureBox1;
         private Button btnExit;
+        private Button button1;
+        private Label label21;
+        private Label label20;
+        private TextBox txtHeightTo;
     }
 }

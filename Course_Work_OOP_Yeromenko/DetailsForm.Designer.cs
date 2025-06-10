@@ -386,7 +386,7 @@
             Controls.Add(groupBox1);
             Name = "DetailsForm";
             Text = "DetailsForm";
-            Load += DetailsForm_Load;
+            
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

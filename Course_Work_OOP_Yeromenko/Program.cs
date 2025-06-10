@@ -16,8 +16,8 @@ namespace Course_Work_OOP_Yeromenko
                     Application.Run(new Form1(role));
                 }
                 else
-                {
-
+                {  
+                    
                     Application.Exit();
                 }
                 

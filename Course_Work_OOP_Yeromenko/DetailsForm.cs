@@ -95,14 +95,8 @@ namespace Course_Work_OOP_Yeromenko
             txtGang.ReadOnly = !editable;
             
         }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void DetailsForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        
+        
 
         private void btnClose_Click_1(object sender, EventArgs e)
         {

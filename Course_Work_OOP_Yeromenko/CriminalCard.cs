@@ -12,7 +12,8 @@ namespace Course_Work_OOP_Yeromenko
 {
     public partial class CriminalCard : UserControl
     {
-        public event EventHandler CriminalUpdated;
+        public delegate void UpdateEventHandler(object updater, UpdateInfoEventArgs updateInfoEventArgs);  
+        public event UpdateEventHandler CriminalUpdated;
         public event EventHandler DeleteRequested;
         private Criminal _criminal;
         
@@ -34,7 +35,8 @@ namespace Course_Work_OOP_Yeromenko
                 DetailsForm detailsForm = new DetailsForm(_criminal, role);
                 if (detailsForm.ShowDialog() == DialogResult.OK)
                 {
-                    CriminalUpdated?.Invoke(this, EventArgs.Empty);
+                    UpdateInfoEventArgs updateInfoEventArgs = new UpdateInfoEventArgs(criminal, _criminal);
+                    CriminalUpdated?.Invoke(this, updateInfoEventArgs);
                 }
             };
 
@@ -66,9 +68,6 @@ namespace Course_Work_OOP_Yeromenko
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-           
-        }
+       
     }
 }

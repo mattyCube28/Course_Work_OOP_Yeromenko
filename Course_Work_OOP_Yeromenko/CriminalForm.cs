@@ -16,14 +16,11 @@ namespace Course_Work_OOP_Yeromenko
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Criminal CriminalData { get; private set; }
-        private List<string> gangs;
+        
         private bool isEditMode;
-        public CriminalForm(List<string> gangs)
+        public CriminalForm()
         {
             InitializeComponent();
-            this.gangs = gangs;
-
-
             cmbProfession.Items.AddRange(new string[]
             {
         "Terrorist",
@@ -41,7 +38,7 @@ namespace Course_Work_OOP_Yeromenko
 
         }
 
-        public CriminalForm(List<string> gangs, Criminal criminalToEdit) : this(gangs)
+        public CriminalForm(List<string> gangs, Criminal criminalToEdit)
         {
             isEditMode = true;
             this.CriminalData = criminalToEdit;
@@ -68,10 +65,7 @@ namespace Course_Work_OOP_Yeromenko
         }
 
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -161,11 +155,7 @@ namespace Course_Work_OOP_Yeromenko
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
+        
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {

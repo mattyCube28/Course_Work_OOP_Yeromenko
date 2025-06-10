@@ -103,7 +103,7 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Criminal";
-            groupBox1.Enter += groupBox1_Enter;
+            
             // 
             // txtGang
             // 
